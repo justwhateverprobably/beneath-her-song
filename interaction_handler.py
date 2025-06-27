@@ -3,6 +3,7 @@ from items import GameItem
 from locations import GameLocation
 from player import *
 from game_state import *
+from dialogue_handler import *
 import pygame
 
 class Commands:
@@ -18,31 +19,38 @@ class Commands:
     def navigate(location: GameLocation):
         PlayerInstance.player.location = location
     #--npc interaction--
-    def talk(npc):
-        #npc_dialogue = 
-        #print(npc_dialogue)
-        pass
+    def talk(npc: NPC):
+        lines = DialogueHandler.get_dialogue(npc.name)
+        for line in lines:
+            print(line)
     #--item interaction--
     def pick_up(item: GameItem):
-        PlayerInstance.player.inventory.append(item)
-        PlayerInstance.player.location.items.remove(item)
+        # add item to inventory if it is interactable, else tell player not interactable
+        if item.isInteractable:
+            PlayerInstance.player.inventory.append(item)
+            PlayerInstance.player.location.items.remove(item)
+        else:
+            print("You cannot pick up this item")
+            return
+        #update game state based on interaction
         if item.item_type == ItemType.artifact:
-            GameState.active_flags.add(GameFlag.found_artifact)
-        elif item.item_type == ItemType.coins:
-            pass
+            state.active_flags.add(GameFlag.found_artifact)
         elif item.item_type == ItemType.journal:
-            pass
-        elif item.item_type == ItemType.knife:
-            pass
+            state.active_flags.add(GameFlag.found_journal)
         elif item.item_type == ItemType.sapphire_bracelet:
-            pass
+            state.active_flags.add(GameFlag.found_bracelet)
         elif item.item_type == ItemType.shrine:
+            state.active_flags.add(GameFlag.found_shrine)
+        else:
             pass
         print(f'You pick up the {item}.')
     def drop(item: GameItem):
-        PlayerInstance.player.inventory.remove(item)
-        PlayerInstance.player.location.items.append(item)
-        print(f'You drop the {item}.')
+        if item in PlayerInstance.player.inventory:
+            PlayerInstance.player.inventory.remove(item)
+            PlayerInstance.player.location.items.append(item)
+            print(f'You drop the {item}.')
+        else:
+            print("You do not have that item")
     def inspect(item):
         print(item.description)
 
@@ -74,25 +82,15 @@ class CommandHandler:
         elif self.cmd.startswith('inspect'):
             item = self.cmd[7:]
             Commands.inspect(item)
+        #--npc interaction--
+        elif self.cmd.startswith('talk to'):
+            npc_name = self.cmd[7:]
+            player = PlayerInstance.player
+            valid_npcs = player.location.npcs
+            npc = NPC.get_by_name(npc_name)
+            if npc in valid_npcs:
+                Commands.talk(npc)
+            else:
+                print(f"There is no one named {npc_name} here.")
         else:
             print('Command not recognized. Type "info" for help')
-
-class DialogueHandler:
-    def handle_dialogue():
-        npcs = NPC.all_npcs
-
-        for npc in npcs:
-            #get dialogues
-            pass
-        
-        #print correspongding dialogue
-        if NPC.npc_type() == NPCType.bartender:
-            pass
-        if NPC.npc_type() == NPCType.siren:
-            pass
-        if NPC.npc_type() == NPCType.sailor:
-            pass
-        if NPC.npc_type() == NPCType.marla:
-            pass
-        if NPC.npc_type() == NPCType.hermit:
-            pass

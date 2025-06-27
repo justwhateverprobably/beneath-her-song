@@ -11,3 +11,5 @@ class GameFlag(Enum):
 class GameState:
     def __init__(self):
         self.active_flags = set()
+
+state = GameState()

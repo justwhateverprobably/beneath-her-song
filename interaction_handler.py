@@ -13,16 +13,24 @@ class Commands:
         inventory = items
         print(inventory)
     def info():
-        commands = ['quit', 'inventory', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]']
+        commands = ['quit', 'inventory', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]', 'talk to [name]', 'ask [name] about [topic]']
         print(commands)
     #--navigation--
     def navigate(location: GameLocation):
         PlayerInstance.player.location = location
     #--npc interaction--
     def talk(npc: NPC):
-        lines = DialogueHandler.get_dialogue(npc.name)
-        for line in lines:
+        line = DialogueHandler.talk_to(npc.name)
+        if npc in PlayerInstance.player.location.npcs:
             print(line)
+        else:
+            print(f"{npc.get_by_name} is not in your location.")
+    def ask_about(npc: NPC, topic):
+        line = DialogueHandler.ask_about(npc.name, topic)
+        if npc in PlayerInstance.player.location.npcs:
+            print(line)
+        else:
+            print(f"{npc.get_by_name} is not in your location.")
     #--item interaction--
     def pick_up(item: GameItem):
         # add item to inventory if it is interactable, else tell player not interactable
@@ -92,5 +100,7 @@ class CommandHandler:
                 Commands.talk(npc)
             else:
                 print(f"There is no one named {npc_name} here.")
+        elif self.cmd.startswith('ask'):
+            pass
         else:
             print('Command not recognized. Type "info" for help')

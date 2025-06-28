@@ -34,5 +34,5 @@ class NPC():
     
     @staticmethod
     def get_by_name(name: str) -> NPCInterface | None:
-        return next((n for n in NPC.all_npcs() if n.name.lower() == name.lower()), None)
+        return next((npc for npc in NPC.all_npcs() if npc.name.lower() == name.lower()), None)
     

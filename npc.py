@@ -12,22 +12,23 @@ class NPCType(Enum):
 class NPCInterface(Protocol):
     name: str
     npc_type: NPCType
-    dialogues: list
+    isFriendly: True
 
 
 class NPC():
-    def __init__(self, name: str, npc_type: NPCType):
+    def __init__(self, name: str, npc_type: NPCType, isFriendly: bool):
         self.name = name
         self.npc_type = npc_type
+        self.isFriendly = isFriendly
 
     @staticmethod
     def all_npcs() -> dict[NPCType, NPCInterface]:
         return {
-            NPCType.siren: NPC("siren", NPCType.siren),
-            NPCType.sailor: NPC("sailor", NPCType.sailor),
-            NPCType.hermit: NPC("hermit", NPCType.hermit),
-            NPCType.bartender: NPC("bartender", NPCType.bartender),
-            NPCType.marla: NPC("Marla", NPCType.marla)
+            NPCType.siren: NPC("siren", NPCType.siren, False),
+            NPCType.sailor: NPC("sailor", NPCType.sailor, True),
+            NPCType.hermit: NPC("hermit", NPCType.hermit, True),
+            NPCType.bartender: NPC("bartender", NPCType.bartender, True),
+            NPCType.marla: NPC("Marla", NPCType.marla, True)
         }
     
     @staticmethod

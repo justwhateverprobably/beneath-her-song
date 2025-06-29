@@ -1,5 +1,6 @@
 import pygame
 from interaction_handler import *
+from game_state import *
 
 class main:
     def __init__(self):

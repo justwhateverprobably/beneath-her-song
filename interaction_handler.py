@@ -19,18 +19,12 @@ class Commands:
     def navigate(location: GameLocation):
         PlayerInstance.player.location = location
     #--npc interaction--
-    def talk(npc: NPC):
+    def talk(npc: NPCInterface):
         line = DialogueHandler.talk_to(npc.name)
-        if npc in PlayerInstance.player.location.npcs:
-            print(line)
-        else:
-            print(f"{npc.get_by_name} is not in your location.")
-    def ask_about(npc: NPC, topic):
+        return line
+    def ask_about(npc: NPCInterface, topic):
         line = DialogueHandler.ask_about(npc.name, topic)
-        if npc in PlayerInstance.player.location.npcs:
-            print(line)
-        else:
-            print(f"{npc.get_by_name} is not in your location.")
+        return line
     #--item interaction--
     def pick_up(item: GameItem):
         # add item to inventory if it is interactable, else tell player not interactable
@@ -62,13 +56,14 @@ class Commands:
     def inspect(item):
         print(item.description)
 
-class CommandHandler:
+class InputHandler:
     def handle_command(self, command):
         self.cmd = command.strip().lower()
 
         #--navigation
         if self.cmd.startswith('go to'):
-            location = self.cmd[6:]
+            location_name = self.cmd[6:]
+            location = GameLocation.get_by_name(location_name)
             Commands.navigate(location)
         #--system commands
         elif self.cmd.startswith('quit'):
@@ -79,28 +74,44 @@ class CommandHandler:
             Commands.info()
         #--item interaction--
         elif self.cmd.startswith('pick up'):
-            item = self.cmd[7:]
+            item_name = self.cmd[7:]
+            item = GameItem.get_by_name(item_name)
             Commands.pick_up(item)
         elif self.cmd.startswith('drop'):
-            item = self.cmd[4:]
+            item_name = self.cmd[4:]
+            item = GameItem.get_by_name(item_name)
             Commands.drop(item)
         elif self.cmd.startswith('use'):
-            item = self.cmd[3:]
+            item_name = self.cmd[3:]
+            item = GameItem.get_by_name(item_name)
             Commands.use(item)
         elif self.cmd.startswith('inspect'):
-            item = self.cmd[7:]
+            item_name = self.cmd[7:]
+            item = GameItem.get_by_name(item_name)
             Commands.inspect(item)
         #--npc interaction--
         elif self.cmd.startswith('talk to'):
             npc_name = self.cmd[7:]
-            player = PlayerInstance.player
-            valid_npcs = player.location.npcs
             npc = NPC.get_by_name(npc_name)
-            if npc in valid_npcs:
-                Commands.talk(npc)
+            if npc and npc in PlayerInstance.player.location.npcs:
+                response = Commands.talk(npc)
+                print(response)
             else:
-                print(f"There is no one named {npc_name} here.")
+                print(f"{npc.get_by_name} is not in your location.")
+            
         elif self.cmd.startswith('ask'):
-            pass
+            #remove prefix, then split the command to access the elements
+            input_str = self.cmd[4:].strip()
+            if ' about ' in input_str:
+                npc_name, topic = input_str.split(' about ', 1)
+                npc_name = npc_name.strip().lower()
+                topic = topic.strip().lower()
+                npc = NPC.get_by_name(npc_name)
+
+                if npc and npc in PlayerInstance.player.location.npcs:
+                    response = Commands.ask_about(npc, topic)
+                    print(response)
+                else:
+                    print(f"{npc.get_by_name} is not in your location")
         else:
             print('Command not recognized. Type "info" for help')

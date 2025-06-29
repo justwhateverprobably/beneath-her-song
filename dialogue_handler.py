@@ -1,3 +1,4 @@
+import random
 from game_state import *
 from player import *
 
@@ -77,6 +78,19 @@ askable_dialogue = {
 
 class DialogueHandler:
     def talk_to(npc_name) -> str:
-        pass
+        lines = ambient_dialogue.get(npc_name.lower())
+        if not lines:
+            return f"You don't see anyone named {npc_name} here."
+        else:
+            return random.choice(lines)
     def ask_about(npc_name, topic) -> str:
-        pass
+        askable_lines = askable_dialogue.get(npc_name.lower())
+        
+        if not askable_lines:
+            return f"You don't see anyone named {npc_name} here."
+        
+        response = askable_lines.get(topic.lower())
+        if response:
+            return response
+        
+        return f"{npc_name.capitalize()} doesn't seem to know anything about {topic}."

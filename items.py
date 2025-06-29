@@ -64,3 +64,7 @@ class GameItem:
             ItemType.artifact: GameItem('artifact', ItemType.artifact, "Half buried in the earth, you pick up a smooth stone with mysterious runes etched into the surface, similar to those on the shrine. You wonder what it could mean", True, GameFlag.found_artifact),
             ItemType.shrine: GameItem('shrine', ItemType.shrine, "The ancient moss covered stone juts out from the ground, etched with cryptic carvings in it's surface.", False, GameFlag.found_shrine),
         }
+    
+    @staticmethod
+    def get_by_name(name: str) -> GameItemInterface | None:
+        return next((item for item in GameItem.all_items() if item.name.lower() == name.lower()), None)

@@ -1,7 +1,6 @@
 from typing import Protocol
 from enum import Enum
 from game_state import *
-from dialogue_handler import *
 
 class NPCType(Enum):
     siren = 0
@@ -17,19 +16,18 @@ class NPCInterface(Protocol):
 
 
 class NPC():
-    def __init__(self, name: str, npc_type: NPCType, dialogue: str):
+    def __init__(self, name: str, npc_type: NPCType):
         self.name = name
         self.npc_type = npc_type
-        self.dialogue = dialogue
 
     @staticmethod
     def all_npcs() -> dict[NPCType, NPCInterface]:
         return {
-            NPCType.siren: NPC("siren", NPCType.siren, NPC.get_dialogue),
-            NPCType.sailor: NPC("sailor", NPCType.sailor, NPC.get_dialogue()),
-            NPCType.hermit: NPC("hermit", NPCType.hermit, NPC.get_dialogue()),
-            NPCType.bartender: NPC("bartender", NPCType.bartender, NPC.get_dialogue()),
-            NPCType.marla: NPC("Marla", NPCType.marla, NPC.get_dialogue())
+            NPCType.siren: NPC("siren", NPCType.siren),
+            NPCType.sailor: NPC("sailor", NPCType.sailor),
+            NPCType.hermit: NPC("hermit", NPCType.hermit),
+            NPCType.bartender: NPC("bartender", NPCType.bartender),
+            NPCType.marla: NPC("Marla", NPCType.marla)
         }
     
     @staticmethod

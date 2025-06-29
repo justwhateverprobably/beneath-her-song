@@ -39,3 +39,7 @@ class GameLocation:
             GameLocation("forest", LocationType.forest, "The dense cover of trees shrouds you in shadow, and seems to block out everything but the sound of your own breath and twigs snapping under your feet. The stillness has an almost ethereal feel to it.", [items[ItemType.shrine], items[ItemType.artifact]], [npcs[NPCType.hermit]]),
             GameLocation("cave", LocationType.cave, "Tucked into the side of the cliff, the entrance to the cave gapes like the mouth of some ancient monster frozen in time. The muddled sounds of the sea echo inside, and create a hauntingly beautiful tone.", [], [npcs[NPCType.siren]]),
         ]
+    
+    @staticmethod
+    def get_by_name(name: str) -> GameItemInterface | None:
+        return next((loc for loc in GameLocation.all_locations() if loc.name.lower() == name.lower()), None)

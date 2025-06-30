@@ -17,6 +17,9 @@ class main:
 
             self.system_font = pygame.font.SysFont('calibri', 32)
 
+    def render_text(self, text: str):
+         pass
+
     #--main loop--
     def run(self):
         self.running = True
@@ -27,6 +30,11 @@ class main:
                     self.running = False
                     return
         # display intro to player
+        if not GameFlag.game_intro in state.active_flags:
+             intro_text = ""
+             commands = Commands.info()
+             main.render_text(intro_text)
+             main.render_text("Commands: " + commands)
         # prompt & wait for user input
 
 main().run()

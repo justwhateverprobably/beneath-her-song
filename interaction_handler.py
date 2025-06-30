@@ -14,7 +14,7 @@ class Commands:
         response = print(inventory)
         return response
     def info():
-        commands = ['quit', 'inventory', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]', 'talk to [name]', 'ask [name] about [topic]']
+        commands = ['quit', 'inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]', 'talk to [name]', 'ask [name] about [topic]', 'attack [name]']
         response = print(commands)
         return response
     #--navigation--
@@ -75,8 +75,8 @@ class Commands:
             print(f'You drop the {item}.')
         else:
             print("You do not have that item")
-    def inspect(item):
-        response = print(item.description)
+    def inspect(input_type):
+        response = print(input_type.description)
         return response
 
 class InputHandler:
@@ -88,6 +88,7 @@ class InputHandler:
             location_name = self.cmd[6:]
             location = GameLocation.get_by_name(location_name)
             Commands.navigate(location)
+            print(f"You go to the {location.name}.")
         #--system commands
         elif self.cmd.startswith('quit'):
             Commands.quit_game()
@@ -109,9 +110,25 @@ class InputHandler:
             item = GameItem.get_by_name(item_name)
             Commands.use(item)
         elif self.cmd.startswith('inspect'):
-            item_name = self.cmd[7:]
-            item = GameItem.get_by_name(item_name)
-            Commands.inspect(item)
+            input_name = self.cmd[7:]
+            inventory_items = PlayerInstance.player.inventory
+            location_items = PlayerInstance.player.location.items
+            #loops through inventory items, if none found loops location items, if none found checks  current location valid
+            for item in inventory_items:
+                if input_name == item.name.lower():
+                    Commands.inspect(item)
+                    break
+            else:
+                for item in location_items:
+                    if input_name == item.name.lower():
+                        Commands.inspect(item)
+                        break
+                else:
+                    if PlayerInstance.player.location.name.lower() == input_name:
+                        Commands.inspect(PlayerInstance.player.location)
+                    else:
+                        print("There's nothing like that to inspect.")
+
         #--npc interaction--
         elif self.cmd.startswith('talk to'):
             npc_name = self.cmd[7:]
@@ -124,7 +141,7 @@ class InputHandler:
             
         elif self.cmd.startswith('ask'):
             #remove prefix, then split the command to access the elements
-            input_str = self.cmd[4:].strip()
+            input_str = self.cmd[4:]
             if ' about ' in input_str:
                 npc_name, topic = input_str.split(' about ', 1)
                 npc_name = npc_name.strip().lower()

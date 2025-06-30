@@ -8,7 +8,8 @@ class GameFlag(Enum):
     found_knife = 5
     won_game = 6
     lost_game = 7
-    NONE = 8
+    game_intro = 8
+    NONE = 9
 
 #--track game state--
 class GameState:

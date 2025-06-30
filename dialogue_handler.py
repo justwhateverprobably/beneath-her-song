@@ -71,7 +71,7 @@ askable_dialogue = {
         'shrine': "I used to walk past it every day when I lived up in the hills. Always gave me the creeps. My mom would always tell me never to touch it.",
         'journal': "Old book? I've seen it before. People find it, swear it's nonsense — some people seem to change their minds though.",
         'artifact': "I saw one like that in a dream — half-buried in wet sand, humming like it was alive.",
-        'bracelet': "That bracelet... real pretty ain't it. Sappire I think. Belonged to a girl who lived here. Quiet type. Used to walk the shore at night, always humming. Then one day, she was just... gone.",
+        'bracelet': "That bracelet... real pretty ain't it. Sapphire I think. Belonged to a girl who lived here. Quiet type. Used to walk the shore at night, always humming. Then one day, she was just... gone.",
     },
 }
 

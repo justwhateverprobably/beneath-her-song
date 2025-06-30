@@ -4,17 +4,14 @@ from locations import GameLocation
 from player import *
 from game_state import *
 from dialogue_handler import *
-import pygame
 
 class Commands:
-    def quit_game():
-        pygame.quit()
     def inventory(items: list[GameItem]):
         inventory = items
         response = print(inventory)
         return response
     def info():
-        commands = ['quit', 'inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]', 'talk to [name]', 'ask [name] about [topic]', 'attack [name]']
+        commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location]', 'talk to [name]', 'ask [name] about [topic]', 'attack [name]']
         response = print(commands)
         return response
     #--navigation--
@@ -81,7 +78,7 @@ class Commands:
 
 class InputHandler:
     def handle_command(self, command):
-        self.cmd = command.strip().lower()
+        self.cmd = command.strip("> ").lower()
 
         #--navigation
         if self.cmd.startswith('go to'):
@@ -90,8 +87,6 @@ class InputHandler:
             Commands.navigate(location)
             print(f"You go to the {location.name}.")
         #--system commands
-        elif self.cmd.startswith('quit'):
-            Commands.quit_game()
         elif self.cmd.startswith('inventory'):
             Commands.inventory()
         elif self.cmd.startswith('help'):

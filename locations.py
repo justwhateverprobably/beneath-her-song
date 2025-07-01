@@ -37,7 +37,7 @@ class GameLocation:
             GameLocation("beach", LocationType.beach, f"The smell of salt and fish is unmistakable. Sometimes you can almost taste it. Waves lap gently onto the shore, and bring with them a melody that seems to float on the wind.\n Items: {items}. People: {npcs}.", [items[ItemType.sapphire_bracelet]], []),
             GameLocation("tavern", LocationType.tavern, f"The warm flickering light of the lanterns beckon you in, and familiar voices drift past your ears as you enter.\n Items: {items}. People: {npcs}.", [], [npcs[NPCType.bartender], npcs[NPCType.marla]]),
             GameLocation("forest", LocationType.forest, f"The dense cover of trees shrouds you in shadow, and seems to block out everything but the sound of your own breath and twigs snapping under your feet. The stillness has an almost ethereal feel to it.\n Items: {items}. People: {npcs}.", [items[ItemType.shrine], items[ItemType.artifact]], [npcs[NPCType.hermit]]),
-            GameLocation("cave", LocationType.cave, f"Tucked into the side of the cliff, the entrance to the cave gapes like the mouth of some ancient monster frozen in time. The muddled sounds of the sea echo inside, and create a hauntingly beautiful tone.\n Items: {items}. People: {npcs}.", [], [npcs[NPCType.siren]]),
+            GameLocation("caves", LocationType.cave, f"Tucked into the side of the cliff, the entrance to the cave gapes like the mouth of some ancient monster frozen in time. The muddled sounds of the sea echo inside, and create a hauntingly beautiful tone.\n Items: {items}. People: {npcs}.", [], [npcs[NPCType.siren]]),
         ]
     
     @staticmethod

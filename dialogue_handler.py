@@ -12,19 +12,21 @@ ambient_dialogue = {
     ],
     'hermit': [
         "The sea doesn't forget. Not even the things we wish it would.",
-        "I heard her voice once. That was enough. It's why I'm out here now.",
+        "I heard her voice once, down near the caves. That was enough. It's why I'm out here now.",
         "The sea hums when she's near. You just have to feel it."
         "Tradition fades over time. It becomes myth. Legend. And then... it's forgotten. Sometimes it comes back to bite us."
         "I knew a man who listened too long. Gone now, probably."
-        "Some doors are better left closed. Some open anyways."
+        "Some doors are better left closed."
+        "There's a hollow in the cliffs. Used to be a smugglers' den, or so they say. Now the cave just echoes."
     ],
     'bartender': [
         "Storm's creeping in again. Bad weather brings old things ashore.",
         "Folks used to stay late. Some for hours. Not anymore.",
-        "You hear the sea singing at night too, don't you? I don't believe in fairytales, but this... this is different",
-        "That storm the other night? Took more than just boats. Folks around here are starting to get uncomfortable with all this weather.",
+        "You hear the sea singing at night too, don't you? I don't believe in fairytales, but this... this feels different",
+        "That storm the other night? Took more than just boats.",
         "Some faces blur with time. Others… stay clear as glass.",
-        "You been out to the cliffs? Don't linger there. More people been going missing around the cave."
+        "You been out near the caves? Don't linger there."
+        "You been out past the cliffs? Not much out there but fog and rock. Still... some folks say they hear singing from that way."
     ],
     'sailor': [
         "This fog isn't just weather. Some nights it carries things back — voices, smells, memories. Stuff you didn't know you lost.",
@@ -32,6 +34,7 @@ ambient_dialogue = {
         "There's something under the water that doesn't move with the tide.",
         "Tied a bell to my bunk. Still don't sleep much."
         "She called to me once. Thought it was the wind. I just try to ignore it now."
+        "I don't walk near that side of the shore anymore. Something about the way the caves echo. Feels like it's hiding something."
     ],
     'marla': [
         "Ever feel like we forget things on purpose? Like we're all just pretending none of this is happening?",
@@ -39,6 +42,7 @@ ambient_dialogue = {
         "You ever have dreams that don't feel like yours?",
         "I used to sing to the sea. Now it sings back.",
         "Everyone here feels it. Most pretend they don't."
+        "Sometimes I see footprints near the cliffs. Just one set. Leading toward the rocks."
     ]
 }
 
@@ -54,24 +58,28 @@ askable_dialogue = {
         'journal': "Words in that book weren't written by one man. They're warnings, not stories. Most people don't realize that.",
         'artifact': "The shrine? That's not just for prayer. It's a boundary marker. A Gate. Older folks tell tales offerings brought by our ancestors to keep us safe from the sea. Most say all but myths now.",
         'bracelet': "It shines like it's calling, doesn't it? That's how it lures you. Pretty things always go missing around here.",
+        'cliffs': "Down by the cliffs… that's where things start to slip. Your thoughts. Your footing. Your grip on what's real. Something lives beneath them — not a beast, but a memory that never died."
     },
     'bartender': {
         'shrine': "I heard people mention it here and there. No one seems to know much about it though. Probably just some old superstitious thing.",
         'journal': "That journal's been drifting around for years. Some of the ink seems to move if you stare too long. Most folks stop reading before the end.",
         'artifact': "Last time one showed up, the guy who found it walked into the sea and never looked back. Folks said he smiled the whole way.",
         'bracelet': "A girl used to wear one just like it, would drop by all the time. She sat right over yonder. Sang to herself, quiet. Disappeared without a trace. Sometimes people swear they can still hear her on the beach at night.",
+        'cliffs': "Used to be just a scenic spot. Lately, folks say they hear voices from down below. Singing, even. I don't go near the cliffs anymore, not since that girl vanished."
     },
     'sailor': {
         'shrine': "I heard of something like that up in the woods. Never went to check it out personally.",
         'journal': "That old sea journal? Belonged to a fisherman years back. Wrote strange things near the end. His boat left, and no one saw him again.",
         'artifact': "We found one washed up after a storm. Boat sank the next day. Superstition, maybe — but I'd toss it.",
-        'bracelet': "Saw a trinket like that once. Worn by a girl who used to hum out here near the docks. One morning, just... wasn't there anymore",
+        'bracelet': "Saw a trinket like that once. Worn by a girl who used to hum out here near the docks. One morning, just… wasn't there anymore",
+        'cliffs': "Fog rolls in thicker by the cliffs. Messes with your senses. I once thought I heard someone crying down there. But no one was there. Just the waves."
     },
     'marla': {
         'shrine': "I used to walk past it every day when I lived up in the hills. Always gave me the creeps. My mom would always tell me never to touch it.",
         'journal': "Old book? I've seen it before. People find it, swear it's nonsense — some people seem to change their minds though.",
         'artifact': "I saw one like that in a dream — half-buried in wet sand, humming like it was alive.",
-        'bracelet': "That bracelet... real pretty ain't it. Sapphire I think. Belonged to a girl who lived here. Quiet type. Used to walk the shore at night, always humming. Then one day, she was just... gone.",
+        'bracelet': "That bracelet… real pretty ain't it. Sapphire I think. Belonged to a girl who lived here. Quiet type. Used to walk the shore at night, always humming. Then one day, she was just… gone.",
+        'cliffs': "The cliffs hum. Not like wind or water, but… like breath. Like something down there is alive, waiting. You feel it too, right?"
     },
 }
 

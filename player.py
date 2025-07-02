@@ -8,8 +8,10 @@ class PlayerCharacter:
         
 class PlayerInstance:
     player: PlayerCharacter = None
+    start_location = next(loc for loc in GameLocation.all_locations() if loc.location_type == LocationType.lighthouse)
     
     @staticmethod
     def init_player():
-        start_location = next(loc for loc in GameLocation.all_locations() if loc.location_type == LocationType.lighthouse)
-        PlayerInstance.player = PlayerCharacter(location=start_location, inventory=[])
+        PlayerInstance.player = PlayerCharacter(location=PlayerInstance.start_location, inventory=[])
+
+PlayerInstance().init_player()

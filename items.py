@@ -17,22 +17,6 @@ class GameItemInterface(Protocol):
     description: str
     isInteractable: bool
     flag: GameFlag
-    
-    @abstractmethod
-    def description() -> str:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def item_type() -> str:
-        raise NotImplementedError
-
-    @abstractmethod
-    def interactable() -> bool:
-        return False
-    
-    @abstractmethod
-    def flag() -> GameFlag:
-        return GameFlag.NONE
 
 class GameItem:
     def __init__(self, name: str, item_type: ItemType, description: str, isInteractable: bool, flag: GameFlag):
@@ -41,18 +25,9 @@ class GameItem:
         self.description = description
         self.isInteractable = isInteractable
         self.flag = flag
-    
-    def description(self) -> str:
-        return self.description
-    
-    def item_type(self) -> ItemType:
-        return self.item_type
-    
-    def interactable(self) -> bool:
-        return self.isInteractable
-    
-    def flag(self) -> GameFlag:
-        return self.flag
+
+    def __str__(self):
+        return self.name
     
     @staticmethod
     def all_items() -> dict[ItemType, GameItemInterface]:
@@ -67,4 +42,4 @@ class GameItem:
     
     @staticmethod
     def get_by_name(name: str) -> GameItemInterface | None:
-        return next((item for item in GameItem.all_items() if item.name.lower() == name.lower()), None)
+        return next((item for item in GameItem.all_items().values() if item.name.lower() == name.lower()), None)

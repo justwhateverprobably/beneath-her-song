@@ -22,6 +22,9 @@ class NPC():
         self.description = description
         self.isFriendly = isFriendly
 
+    def __str__(self):
+        return self.name
+
     @staticmethod
     def all_npcs() -> dict[NPCType, NPCInterface]:
         return {
@@ -34,5 +37,5 @@ class NPC():
     
     @staticmethod
     def get_by_name(name: str) -> NPCInterface | None:
-        return next((npc for npc in NPC.all_npcs() if npc.name.lower() == name.lower()), None)
+        return next((npc for npc in NPC.all_npcs().values() if npc.name.lower() == name.lower()), None)
     

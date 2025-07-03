@@ -73,8 +73,17 @@ class Main:
                             
                     elif event.key == pygame.K_BACKSPACE:
                         self.player_input = self.player_input[:-1]
+
                     else:
                         self.player_input += character
+                
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 4:  # Scroll up
+                        self.renderer.scroll_offset = max(0, self.renderer.scroll_offset + 1)
+                        self.renderer.render(self.player_input)
+                    elif event.button == 5:  # Scroll down
+                        self.renderer.scroll_offset = max(0, self.renderer.scroll_offset - 1)
+                        self.renderer.render(self.player_input)
             
             self.render_input()
     
@@ -107,22 +116,33 @@ class Renderer:
         self.text_color = (10, 150, 10) #dark green
         self.bg_color = (0, 0, 0) #black
         self.lines = []
+        self.scroll_offset = 0
 
         self.system_font = pygame.font.SysFont('calibri', 18)
         pygame.display.set_caption("Beneath Her Song")
 
 
-    def update(self, feedback_text: str, input_text: str):    
+    def update(self, feedback_text: str, input_text: str):  
         if feedback_text:
             self.add_wrapped_text(feedback_text)
+            self.scroll_offset = 0
+        self.render(input_text)
+        
+    def render(self, input_text: str):
+        line_height = self.system_font.get_height() + self.line_spacing
+        max_lines = self.height // line_height - 1
+        max_scroll = max(0, len(self.lines) - (self.height // (self.system_font.get_height() + self.line_spacing) - 1))
+        self.scroll_offset = max(0, min(self.scroll_offset, max_scroll))
         
         x, y = 20, 20
         self.surface.fill(self.bg_color)
-        line_height = self.system_font.get_height() + self.line_spacing
-        max_lines = self.height // (self.system_font.get_height() + self.line_spacing) - 1 #-1 so you can see input line
+        start_index = max(0, len(self.lines) - self.scroll_offset - max_lines)
+        end_index = len(self.lines) - self.scroll_offset if self.scroll_offset != 0 else len(self.lines)
+        visible_lines = self.lines[start_index:end_index]
+
 
         #display previous lines
-        for line in self.lines:
+        for line in visible_lines:
             text_surface = self.system_font.render(line.strip(), True, self.text_color)
             self.surface.blit(text_surface, (x, y))
             y += line_height
@@ -133,7 +153,8 @@ class Renderer:
         input_surface = self.system_font.render("> " + input_text.strip() + " |", True, self.text_color)
         self.surface.blit(input_surface, (x, y))
 
-        while len(self.lines) > max_lines:
+        max_total_lines = max_lines * 3
+        while len(self.lines) > max_total_lines:
             self.lines.pop(0)
 
         pygame.display.update()

@@ -25,10 +25,10 @@ class Commands:
     def ask_about(self, npc: NPCInterface, topic):
         return DialogueHandler.ask_about(npc.name, topic)
     def attack(self, npc: NPCInterface):
-        if not npc.isFriendly and GameItem.get_by_name('knife') in PlayerInstance.player.inventory:
+        if not npc.isFriendly and any(item.name == 'knife' for item in PlayerInstance.player.inventory):
             if npc.npc_type == NPCType.siren:
                 state.active_flags.add(GameFlag.won_game)
-            return f"You draw your knife from its sheath, catching them off guard, and take one fatal swipe."
+            return f"You draw your knife from its sheath, catching them off guard, and take them down in one fatal swipe."
         elif npc.isFriendly:
             return "You cannot attack a friend."
         else:

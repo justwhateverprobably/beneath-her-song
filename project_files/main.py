@@ -94,7 +94,6 @@ class Main:
         state.active_flags.add(GameFlag.game_intro)
 
     def display_end_screen(self):
-        state.active_flags.clear()
         self.awaiting_restart = True
         self.render_feedback("Would you like to play again? (y/n)")
     

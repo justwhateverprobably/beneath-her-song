@@ -10,7 +10,6 @@ class Commands:
         if not items:
             return "Your inventory is empty."
         return "Inventory: " + "-".join(f"{item.name}" for item in items)
-
     def info(self):
         print("info called")
         self.commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location/person]', 'talk to [name]', 'ask [name] about [topic]', 'attack [name]']

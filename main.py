@@ -29,16 +29,15 @@ class Main:
             
         self.running = True
         while self.running:
-            if GameFlag.won_game in state.active_flags:
-                win_text = "The fog finally lifts, and with it, the weight that has hung over this place. The sea's song fades into a gentle whisper, and the lighthouse lamp burns steady through the night. You've faced the shadows, calmed the restless spirits, and the town breathes again. Though the night is quiet now, you know the sea will always sing — but this time, it's a song of peace."
-                self.render_feedback(win_text)
-                self.display_end_screen()
-                return
-            elif GameFlag.lost_game in state.active_flags:
-                lose_text = "The cold seeps in deeper than you expected, and the shadows claw into your head. The sound of the waves swallow your cries for help, and the darkness feels like it's closing in from every side. No one will find you here. The voice of the siren lures you in closer… closer. The town moves on — but you're gone, just another story swallowed by the tides."
-                self.render_feedback(lose_text)
-                self.display_end_screen()
-                return
+            if not self.awaiting_restart:
+                if GameFlag.won_game in state.active_flags:
+                    win_text = "The fog finally lifts, and with it, the weight that has hung over this place. The sea's song fades into a gentle whisper, and the lighthouse lamp burns steady through the night. You've faced the shadows, calmed the restless spirits, and the town breathes again. Though the night is quiet now, you know the sea will always sing — but this time, it's a song of peace."
+                    self.render_feedback(win_text)
+                    self.display_end_screen()
+                elif GameFlag.lost_game in state.active_flags:
+                    lose_text = "The cold seeps in deeper than you expected, and the shadows claw into your head. The sound of the waves swallow your cries for help, and the darkness feels like it's closing in from every side. No one will find you here. The voice of the siren lures you in closer… closer. The town moves on — but you're gone, just another story swallowed by the tides."
+                    self.render_feedback(lose_text)
+                    self.display_end_screen()
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -49,15 +48,28 @@ class Main:
                     character = event.unicode
                     if event.key == pygame.K_RETURN:
                         playerInput = self.player_input.strip()
+
                         if playerInput:
-                            command_text = "> " + playerInput
-                            response = None
-                            if self.input_handler:
+                            if self.awaiting_restart:
+                                if playerInput == 'y':
+                                    self.restart_game()
+                                    self.display_intro_screen()
+                                    self.awaiting_restart = False
+                                    state.active_flags.add(GameFlag.game_intro)
+                                elif playerInput == 'n':
+                                    self.running = False
+                                    return
+                                else:
+                                    self.render_feedback("Please enter 'y' or 'n'.")
+                                self.player_input = ''
+                            else:
+                                command_text = "> " + playerInput
+                                response = None
                                 response = self.input_handler.handle_command(playerInput)
-                            self.render_feedback(command_text)
-                            if response:
-                                self.render_feedback(response)
-                            self.player_input = ""
+                                self.render_feedback(command_text)
+                                if response:
+                                    self.render_feedback(response)
+                                self.player_input = ""
                             
                     elif event.key == pygame.K_BACKSPACE:
                         self.player_input = self.player_input[:-1]
@@ -73,14 +85,16 @@ class Main:
         state.active_flags.add(GameFlag.game_intro)
 
     def display_end_screen(self):
+        state.active_flags.clear()
         self.awaiting_restart = True
-        play_again_text = "Would you like to play again? (y/n)"
-        self.render_feedback(play_again_text)
+        self.render_feedback("Would you like to play again? (y/n)")
     
     def restart_game(self):
+        self.player_input = ''
         state.active_flags.clear()
         PlayerInstance.player.location = PlayerInstance.start_location
         PlayerInstance.player.inventory.clear()
+        self.renderer.lines.clear()
 
 
 class Renderer:

@@ -121,20 +121,20 @@ class InputHandler:
             input_name = self.cmd[7:].strip().lower()
             inventory_items = PlayerInstance.player.inventory
             location_items = PlayerInstance.player.location.items
+            location_npcs = PlayerInstance.player.location.npcs
             #loops through inventory items, if none found loops location items, if none found checks  current location valid
             for item in inventory_items:
                 if input_name.strip().lower() == item.name.lower():
                     return self.commands.inspect(item)
-
-            else:
-                for item in location_items:
-                    if input_name.strip().lower() == item.name.strip().lower():
-                        return self.commands.inspect(item)
-                else:
-                    if PlayerInstance.player.location.name.strip().lower() == input_name.strip().lower():
-                        return self.commands.inspect(PlayerInstance.player.location)
-                    else:
-                        return "There's nothing like that to inspect."
+            for item in location_items:
+                if input_name.strip().lower() == item.name.strip().lower():
+                    return self.commands.inspect(item)
+            for npc in location_npcs:
+                if input_name.strip().lower() == npc.name.strip().lower():
+                    return self.commands.inspect(npc)
+            if PlayerInstance.player.location.name.strip().lower() == input_name:
+                return self.commands.inspect(PlayerInstance.player.location)
+            return "There's nothing like that to inspect."
 
         #--npc interaction--
         elif self.cmd.startswith('attack'):

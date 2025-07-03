@@ -140,7 +140,7 @@ class Renderer:
 
     def add_wrapped_text(self, text: str):
         import re
-        sentences = re.findall(r'.+?(?:[.?!]|$)', text)
+        sentences = re.findall(r'.+?(?:[.?!:]|$)', text)
         max_width = self.width - 40
         
         for sentence in sentences:

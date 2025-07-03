@@ -1,1 +1,0 @@
-#use flags and inventory to trigger events

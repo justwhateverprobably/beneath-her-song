@@ -153,10 +153,6 @@ class Renderer:
         input_surface = self.system_font.render("> " + input_text.strip() + " |", True, self.text_color)
         self.surface.blit(input_surface, (x, y))
 
-        max_total_lines = max_lines * 3
-        while len(self.lines) > max_total_lines:
-            self.lines.pop(0)
-
         pygame.display.update()
 
     def add_wrapped_text(self, text: str):

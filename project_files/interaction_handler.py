@@ -82,9 +82,6 @@ class Commands:
         if isinstance(desc, str):
             return desc.strip()
 
-        # If it's something else (like an object), try to access a .text or .content attribute, or fail gracefully
-        return str(desc) if hasattr(desc, '__str__') and not str(desc).startswith("<") else "There is nothing special about it."
-
 class InputHandler:
     def __init__(self):
         self.commands = Commands()
@@ -134,7 +131,7 @@ class InputHandler:
                     return self.commands.inspect(npc)
             if PlayerInstance.player.location.name.strip().lower() == input_name:
                 return self.commands.inspect(PlayerInstance.player.location)
-            return "There's nothing like that to inspect."
+            return "There's nothing special about it."
 
         #--npc interaction--
         elif self.cmd.startswith('attack'):
@@ -142,6 +139,7 @@ class InputHandler:
             npc = NPC.get_by_name(npc_name)
             if npc:
                 return self.commands.attack(npc)
+            return "You can not attack that person, or they are not in your location, or they do not exist."
         elif self.cmd.startswith('talk to'):
             npc_name = self.cmd[7:].strip().lower()
             npc = NPC.get_by_name(npc_name)

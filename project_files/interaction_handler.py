@@ -12,7 +12,7 @@ class Commands:
         return "Inventory: " + "-".join(f"{item.name}" for item in items)
     def info(self):
         print("info called")
-        self.commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location/person]', 'talk to [name]', 'ask [name] about [topic(person/item/location)]', 'attack [name]']
+        self.commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'inspect [item/location/person]', 'talk to [name]', 'ask [name] about [topic(person/item/location)]', 'attack [name]']
         return "Available commands: " + "".join(f"- {cmd}." for cmd in self.commands)
     #--navigation--
     def navigate(self, location: GameLocation):

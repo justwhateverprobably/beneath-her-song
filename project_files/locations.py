@@ -44,7 +44,7 @@ class GameLocation:
         npcs = NPC.all_npcs()
 
         return[
-            GameLocation("lighthouse", LocationType.lighthouse, f"A lone beacon that sits atop a small hill on the outskirts of the village, shrouded in the fog. The familiar walls shelter you from the howling wind and harsh waves.", [items[ItemType.coins]], []),
+            GameLocation("lighthouse", LocationType.lighthouse, f"A lone beacon that sits atop a small hill on the outskirts of the town, shrouded in the fog. The familiar walls shelter you from the howling wind and harsh waves, although they don't block out the sound of the song at night.", [items[ItemType.coins]], []),
             GameLocation("docks", LocationType.docks, f"The rickety boards stretch out into the ocean, and seem to disappear in the heavy mist. Boats groan as they rock back and forth in the water, as if heaving one final breath.", [items[ItemType.journal], items[ItemType.knife]], [npcs[NPCType.sailor]]),
             GameLocation("beach", LocationType.beach, f"The smell of salt and fish is unmistakable. Sometimes you can almost taste it. Waves lap gently onto the shore, and bring with them a melody that seems to float on the wind.", [items[ItemType.sapphire_bracelet]], []),
             GameLocation("tavern", LocationType.tavern, f"The warm flickering light of the lanterns beckon you in, and familiar voices drift past your ears as you enter.", [], [npcs[NPCType.bartender], npcs[NPCType.marla]]),

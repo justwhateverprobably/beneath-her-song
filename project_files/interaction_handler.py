@@ -12,12 +12,19 @@ class Commands:
         return "Inventory: " + "-".join(f"{item.name}" for item in items)
     def info(self):
         print("info called")
-        self.commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location/person]', 'talk to [name]', 'ask [name] about [topic]', 'attack [name]']
+        self.commands = ['inventory', 'help', 'go to [location]', 'pick up [item]', 'drop [item]', 'use [item]', 'inspect [item/location/person]', 'talk to [name]', 'ask [name] about [topic(person/item/location)]', 'attack [name]']
         return "Available commands: " + "".join(f"- {cmd}." for cmd in self.commands)
     #--navigation--
     def navigate(self, location: GameLocation):
         if location:
+            if PlayerInstance.player.location.location_type == LocationType.cave:
+                if location.location_type != LocationType.cave:
+                    return "The song grow louder and you hear her voice echo through the cave. Where do you think you're going?" 
+                
             PlayerInstance.player.location = location
+            if location.location_type == LocationType.cave:
+                return f"You go to the {location.name}. {location.description} You know you don't stand a chance unless you can attack before the song overwhelms you."
+        
             return f"You go to the {location.name}. {location.description}"
     #--npc interaction--
     def talk(self, npc: NPCInterface):

@@ -2,7 +2,7 @@ name: Build Windows EXE
 
 on:
   push:
-    branches: [main] # Change "main" if your branch is named differently
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: dist/MyGame.exe
+          path: dist/beneath_her_song.exe

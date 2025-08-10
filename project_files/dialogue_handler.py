@@ -13,10 +13,10 @@ ambient_dialogue = {
     'hermit': [
         "The sea doesn't forget. Not even the things we wish it would.",
         "I heard her voice once, down near the caves. That was enough. It's why I'm out here now.",
-        "The sea hums when she's near. You just have to feel it."
-        "Tradition fades over time. It becomes myth. Legend. And then… it's forgotten. Sometimes it comes back to bite us."
-        "I knew a man who listened too long. Gone now, probably."
-        "Some doors are better left closed."
+        "The sea hums when she's near. You just have to feel it.",
+        "Tradition fades over time. It becomes myth. Legend. And then… it's forgotten. Sometimes it comes back to bite us.",
+        "I knew a man who listened too long. Gone now, probably.",
+        "Some doors are better left closed.",
         "There's a hollow in the cliffs. Used to be a smugglers' den, or so they say. Now the caves just echo."
     ],
     'bartender': [
@@ -25,15 +25,15 @@ ambient_dialogue = {
         "You hear the sea singing at night too, don't you? I don't believe in fairytales, but this… this feels different",
         "That storm the other night? Took more than just boats.",
         "Some faces blur with time. Others… stay clear as glass.",
-        "You been out near the caves? Don't linger there."
+        "You been out near the caves? Don't linger there.",
         "You been out past the cliffs? Not much out there but fog and rock. Still… some folks say they hear singing from that way."
     ],
     'sailor': [
         "This fog isn't just weather. Some nights it carries things back — voices, smells, memories. Stuff you didn't know you lost.",
         "Ships don't come back right anymore. If they come back at all.",
         "There's something under the water that doesn't move with the tide.",
-        "Tied a bell to my bunk. Still don't sleep much."
-        "She called to me once. Thought it was the wind. I just try to ignore it now."
+        "Tied a bell to my bunk. Still don't sleep much.",
+        "She called to me once. Thought it was the wind. I just try to ignore it now.",
         "I don't walk near the south side of the shore anymore. Something about the way the caves echo. Feels like it's hiding something."
     ],
     'marla': [
@@ -41,7 +41,7 @@ ambient_dialogue = {
         "I see lights on the beach sometimes. Blue ones. No one else does.",
         "You ever have dreams that don't feel like yours?",
         "I used to sing to the sea. Now it sings back.",
-        "Everyone here feels it. Most pretend they don't."
+        "Everyone here feels it. Most pretend they don't.",
         "Sometimes I see footprints near the cliffs. Just one set. Leading toward the rocks."
     ]
 }

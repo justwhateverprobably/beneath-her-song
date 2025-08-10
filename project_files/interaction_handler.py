@@ -69,12 +69,15 @@ class Commands:
                     return f'You pick up the {item}.'
         return "That item is not in your location."
     def drop(self, item: GameItem):
-        for inv_item in PlayerInstance.player.inventory:
-            if inv_item.name == item.name:
-                PlayerInstance.player.inventory.remove(inv_item)
-                PlayerInstance.player.location.items.append(inv_item)
-                return f'You drop the {item.name}.'
-        return "You do not have that item."
+        if not isinstance(item, GameItem):
+            return "Invalid item."
+        else:
+            for inv_item in PlayerInstance.player.inventory:
+                if inv_item.name == item.name:
+                    PlayerInstance.player.inventory.remove(inv_item)
+                    PlayerInstance.player.location.items.append(inv_item)
+                    return f'You drop the {item.name}.'
+            return "You do not have that item."
     def inspect(self, thing):
         desc = getattr(thing, 'description', None)
 

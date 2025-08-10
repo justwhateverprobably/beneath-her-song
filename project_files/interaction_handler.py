@@ -69,15 +69,14 @@ class Commands:
                     return f'You pick up the {item}.'
         return "That item is not in your location."
     def drop(self, item: GameItem):
-        if not isinstance(item, GameItem):
-            return "Invalid item."
-        else:
+        if len(PlayerInstance.player.inventory) > 0 and isinstance(item, GameItem):
             for inv_item in PlayerInstance.player.inventory:
                 if inv_item.name == item.name:
                     PlayerInstance.player.inventory.remove(inv_item)
                     PlayerInstance.player.location.items.append(inv_item)
                     return f'You drop the {item.name}.'
-            return "You do not have that item."
+            return "You do not have that item in your inventory."
+        return "Your inventory is empty."
     def inspect(self, thing):
         desc = getattr(thing, 'description', None)
 
@@ -121,9 +120,9 @@ class InputHandler:
         elif self.cmd.startswith('drop'):
             item_name = self.cmd[4:].strip().lower()
             item = GameItem.get_by_name(item_name)
-            if item.name.lower() == item_name.lower():
+            if item and item.name.lower() == item_name.lower():
                 return self.commands.drop(item)
-            return "You do not have that item."
+            return "You do not have that item, or that item may not exist."
         elif self.cmd.startswith('inspect'):
             input_name = self.cmd[7:].strip().lower()
             inventory_items = PlayerInstance.player.inventory

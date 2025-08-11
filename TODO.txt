@@ -1,0 +1,5 @@
+- art
+- art rendering
+- shop?
+- remove ambient dialogue once already used
+- updated build for minor bug fixes

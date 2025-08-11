@@ -31,11 +31,11 @@ class Main:
         while self.running:
             if not self.awaiting_restart:
                 if GameFlag.won_game in state.active_flags:
-                    win_text = "The fog finally lifts, and with it, the weight that has hung over this place. The sea's song fades into a gentle whisper, and the lighthouse lamp burns steady through the night. You've faced the shadows, calmed the restless spirits, and the town breathes again. Though the night is quiet now, you know the sea will always sing — but this time, it's a song of peace."
+                    win_text = "The storms finally seem to calm, and with the, the weight that has hung over this place. The song fades to a gentle whisper of waves lapping on the shore, and the lighthouse lamp burns steady through the night. Not much seems to change. Everything still feels dull and gray, but now it's not as oppressive. The song is still there — but this time, it's a song of peace. One that lulls you to sleep."
                     self.render_feedback(win_text)
                     self.display_end_screen()
                 elif GameFlag.lost_game in state.active_flags:
-                    lose_text = "The cold seeps in deeper than you expected, and the shadows claw into your head. The sound of the waves swallow your cries for help, and the darkness feels like it's closing in from every side. No one will find you here. The voice of the siren lures you in closer… closer. The town moves on — but you're gone, just another story swallowed by the tides."
+                    lose_text = "The cold seeps in deeper than you expected, and shadows start to claw into your head. The sound of the waves swallow your cries for help, and the darkness feels like it's closing in from every side. No one will find you here. The voice of the siren lures you in closer… closer. The town moves on — but you're gone, just another story swallowed by the tides."
                     self.render_feedback(lose_text)
                     self.display_end_screen()
             
@@ -88,7 +88,7 @@ class Main:
             self.render_input()
     
     def display_intro_screen(self):
-        intro_text = "The town's smaller than you expected. Quiet. People keep to themselves. You've been staying up at the lighthouse — it's cold, but it's dry, and the lamp keeps you busy at night. When the fog isn't too thick, you can see the tavern down the hill. A few familiar faces come and go. No one says much unless they've had a drink or two. Closer to the water, the docks are always shifting — boards groaning, ropes straining. Some of the boats haven't moved in a long time. There's a narrow path behind the tavern that winds through the forest. You haven't gone far. The trees feel like they're listening. And the beach… the beach is always quiet, but never still. Something about it makes you uneasy, though you can't say why. It's not a bad place. Just… a strange one. You're still settling in though. Maybe it just takes time to get used to."
+        intro_text = "The town's smaller than you expected. Quiet, as if the fog swallowed any sound. People keep to themselves. You've been staying up at the lighthouse — it's cold, but it's dry, and the lamp keeps you busy at night. When the fog isn't too thick, you can see the tavern down in the cove. A few familiar faces come and go. No one says much unless they've had a drink or two. Closer to the water, the docks are always shifting — boards groaning, ropes straining. Some of the boats haven't moved in a long time. There's a narrow path that winds through the forest, leading down into the town below, with other narrow paths branching out. You haven't gone down them though. The trees feel like they're listening. And the beach… the beach is always quiet, but never still. Something about it makes you uneasy, though you can't say why. It's not a bad place. Just… a strange one. You're still settling in though. Maybe it just takes time to get used to."
         self.render_feedback(intro_text)
         self.render_feedback("Type 'help' for a list of commands.")
         state.active_flags.add(GameFlag.game_intro)

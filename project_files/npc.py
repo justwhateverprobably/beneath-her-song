@@ -28,10 +28,10 @@ class NPC():
     @staticmethod
     def all_npcs() -> dict[NPCType, NPCInterface]:
         return {
-            NPCType.siren: NPC("siren", NPCType.siren, "Her stature is surprisingly tall and intimidating for her size, and you know immediately that she must be a siren. She is ethereal with glistening pale skin and limbs too long for her body. Her stillness is unnerving, like she's waiting for a cue only she can hear.", False),
-            NPCType.sailor: NPC("sailor", NPCType.sailor, "Broad and weathered, with a crooked nose, one milky eye, and rope-burned hands, he seems paranoid, twitchy, and always his good eye is always darting from place to place.", True),
-            NPCType.hermit: NPC("hermit", NPCType.hermit, "He is a wiry, sunburnt old man with wild white hair and shadowed eyes, making him look almost ancient. He speaks slowly, as if time bends around him.", True),
-            NPCType.bartender: NPC("bartender", NPCType.bartender, "He is a thick-built man, and bald with faded tattoos and calloused hands. He is calm, quiet, and always seems to be watching everything at once from the corner of his eye.",  True),
+            NPCType.siren: NPC("siren", NPCType.siren, "She has a snake-like stature and is surprisingly intimidating for her size, and you know immediately that she must be a siren. She is ethereal with glistening pale skin and limbs too long for her body, yet still captivates you. Her stillness is unnerving, like she's waiting for a cue only she can hear.", False),
+            NPCType.sailor: NPC("sailor", NPCType.sailor, "Broad and weathered, with a crooked nose, short grey hair, and tattered clothes, he seems paranoid, twitchy, and always his one good eye is always darting from place to place.", True),
+            NPCType.hermit: NPC("hermit", NPCType.hermit, "He is a short, wiry, suntanned old man with a bald head and scraggly beard. His eyes look sunken and shadowed, making him look almost ancient. He mutters slowly to himself, as if time bends around him.", True),
+            NPCType.bartender: NPC("bartender", NPCType.bartender, "He is a thick-built man, with faded tattoos covering his head and a gruff look on his face. He is calm, quiet, and always seems to be busy doing various tasks, or exchanging small talk.",  True),
             NPCType.marla: NPC("Marla", NPCType.marla, "She's young, with thin sharp eyes, wrapped in an oversized coat with unevenly cut hair. Her appearance seems a bit odd, although looking around you notice that many other people here do too.", True)
         }
     

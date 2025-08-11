@@ -4,16 +4,16 @@ from player import *
 
 ambient_dialogue = {
     'siren': [
-        "The air thickens with her song. You feel it pulling — not your body, but your will. 'Come closer,' she whispers. 'You're already halfway gone.'",
+        "Come closer…you're already halfway gone.",
         "They tried to warn you. That was kind of them.",
-        "The sea does not take prisoners. Only offerings.",
+        "The sea doesn't take prisoners. Only offerings.",
         "You drift closer with each breath. Even now.",
-        "I'm waiting. Whenever you're ready."
+        "You've got a strong soul. Not strong enough though."
     ],
     'hermit': [
         "The sea doesn't forget. Not even the things we wish it would.",
         "I heard her voice once, down near the caves. That was enough. It's why I'm out here now.",
-        "The sea hums when she's near. You just have to feel it.",
+        "The sea hums when she's near. It's like the ocean itself is calling.",
         "Tradition fades over time. It becomes myth. Legend. And then… it's forgotten. Sometimes it comes back to bite us.",
         "I knew a man who listened too long. Gone now, probably.",
         "Some doors are better left closed.",
@@ -25,24 +25,25 @@ ambient_dialogue = {
         "You hear the sea singing at night too, don't you? I don't believe in fairytales, but this… this feels different",
         "That storm the other night? Took more than just boats.",
         "Some faces blur with time. Others… stay clear as glass.",
-        "You been out near the caves? Don't linger there.",
-        "You been out past the cliffs? Not much out there but fog and rock. Still… some folks say they hear singing from that way."
+        "You're the new guy right? You been out near the caves at all? Word of mouth says more people have gone missing out there.",
+        "You been out past the cliffs? Not much out there but fog and rock. Still… some folks say they hear a song from that way, drifting off the water."
     ],
     'sailor': [
-        "This fog isn't just weather. Some nights it carries things back — voices, smells, memories. Stuff you didn't know you lost.",
+        "The fog has been rolling in thick lately. Even some of our best men are getting lost out there.",
         "Ships don't come back right anymore. If they come back at all.",
-        "There's something under the water that doesn't move with the tide.",
+        "Some say the song comes from the ocean. I think there's something under the water that doesn't move with the tide.",
         "Tied a bell to my bunk. Still don't sleep much.",
-        "She called to me once. Thought it was the wind. I just try to ignore it now.",
+        "The song called to me once. Almost followed it, but then remembered the stories. I just try to avoid it now.",
         "I don't walk near the south side of the shore anymore. Something about the way the caves echo. Feels like it's hiding something."
     ],
     'marla': [
         "Ever feel like we forget things on purpose? Like we're all just pretending none of this is happening?",
         "I see lights on the beach sometimes. Blue ones. No one else does.",
-        "You ever have dreams that don't feel like yours?",
+        "You ever have dreams that don't feel like yours? Like melodies with no rhythm?",
         "I used to sing to the sea. Now it sings back.",
-        "Everyone here feels it. Most pretend they don't.",
-        "Sometimes I see footprints near the cliffs. Just one set. Leading toward the rocks."
+        "Everyone here feels it. Most pretend they don't. Ever since that girl went missing.",
+        "Sometimes I see footprints near the cliffs. Just one set. Leading toward the rocks.",
+        "There's a shrine out in the forest. Sometimes I wonder what it means."
     ]
 }
 
@@ -51,7 +52,7 @@ askable_dialogue = {
         'shrine': "You stood before the shrine — the old stone buried in the forest. It spoke, didn't it? The ones who hear it never leave unchanged.",
         'journal': "He wrote of dreams, of voices on the water. Thought the pages would protect him. They didn't.",
         'artifact': "Her voice ripples through the mist. 'The carved stone opened a door. Not all doors can be shut.'",
-        'sapphire bracelet': "She smiles faintly. 'That bracelet shimmered on another's wrist once. She followed the melody too. Walked straight into the tide.'",
+        'sapphire bracelet': "She smiles faintly. 'That bracelet rested on another's wrist once. She followed the melody too. Walked straight into the tide.'",
         'cliffs': "I used to wander the cliffs all the time. I like it better in here though.",
         'caves': "The caves are my home. They'll be yours soon too.",
         'girl': "She came to me willingly. Heard the call before she knew what it meant. She sang with me beneath the waves, her voice lost to the air, but not to the sea. She's home now. Happier, perhaps, than she ever was on land.",
@@ -64,7 +65,7 @@ askable_dialogue = {
     'hermit': {
         'artifact': "A carved stone. That's no relic — it's a piece of something older. Something that still breathes beneath the tide. Something our ancestors carried. A token.",
         'journal': "Words in that book weren't written by one man. Not really. He used to be a fisherman. By the end he was a whole new person. There are warnings in there. Most people don't realize that though. By the time he realized, it was too late for him. Some say he's still around though.",
-        'shrine': "The shrine? That's not just for prayer. It's a boundary marker. A Gate. Older folks tell tales offerings brought by our ancestors to keep us safe from the sea. Most say all but myths now.",
+        'shrine': "The shrine? That's not just for prayer. It's a boundary marker. A Gate. Older folks tell tales of offerings brought by our ancestors to keep us safe from the sea. Most have forgotten.",
         'sapphire bracelet': "It shines like it's calling, doesn't it? That's how it lures you. Pretty things always go missing around here.",
         'cliffs': "Down by the cliffs… the caves… that's where things start to slip. Your thoughts. Your footing. Your grip on what's real. Something lives beneath them — something our ancestors tried to protext us from.",
         'caves': "Legends tell of an ancient creature that dwells there. People used to worship near the shrine. They would make offering to spare their people.",
@@ -88,10 +89,10 @@ askable_dialogue = {
         'artifact': "Last time one showed up, the guy who found it walked into the sea and never looked back. Folks said he smiled the whole way.",
         'sapphire bracelet': "A girl used to wear one just like it, would drop by all the time. She sat right over yonder. Sang to herself, quiet. Disappeared without a trace. Sometimes people swear they can still hear her on the beach at night.",
         'cliffs': "Used to be just a scenic spot. Lately, folks say they hear voices from the caves. Singing, even. I don't go near the cliffs anymore, not since that girl vanished.",
-        'caves': "I hear people talk about them occasionaly. Folks say that's where the girl went missing all those year ago.",
+        'caves': "People don't like to talk much about 'em. Folks say that's where the girl went missing all those year ago. They say the place is haunted. That it calls you with it's song.",
         'girl': "Not many remember. It's just a story to most people. She used to hang around here though. Would drop in, sit right over there. Hum to herself. One day, she just stopped showing up though. Some say her footprints ended at the edge of the water, down near the caves.",
         'song': "I thought it was a myth until that one girl went missing. Now, I'm not so sure. People say it will haunt you though. Lure you into the caves for the sea to claim you.",
-        'storm': "No big deal. We get 'em all the time here.",
+        'storm': "No big deal. We get 'em all the time here. The sailor's and fishermen don't like 'em much though.",
         'sea': "This place definitely ain't the place to swim, that's for sure. Between the weather and the song only a fool would even consider it.",
         'sailor': "Kid, there's plenty of sailors here. Don't know any of 'em personally, but they're always dropping by.",
         'marla': "Marla? She's a regular here. Swings by all the time. You should go talk to her. She's real nice, although some people find her kind of weird.",
@@ -114,6 +115,7 @@ askable_dialogue = {
         'caves': "Nobody goes near the caves. Everytime somebody does, we never see 'em again. Rough waters down there, and some say it's a trap.",
         'girl': "Used to see her out here all the time. Pretty little thing. She'd stare out past the breakers like she was looking for something no one else could see. I tried to warn her. Never saw her again.",
         'song': "Old folklore mostly. The kind of thing you don't believe until you see… or hear. People say that those who hear it never recover… I was one of the few who did.",
+        'stories': "Never heard 'em? They say there's a song that drifts through the fog. Most who follow are never seen again.",
         'sea': "The sea holds all kinds of secrets. All we can do is speculate.",
         'siren': "Most people say it's just a myth. I did too, until I heard the voice. Took me years to learn how to ignore it.",
         'marla': "Marla comes out here quite a bit. Helps us out when she can. She's a sweet kid.",
@@ -144,8 +146,9 @@ askable_dialogue = {
         'beach': "Aside from the song, there's nothing there. It's all just fog and sand and water. And the smell. I can't stand the smell. I can almost the salt and rot.",
         'docks': "I don't really like it down there, but I help out when I can. The people there need as much help as they can get.",
         'lighthouse': "I've never been up there. I like to look at it when the sun goes down though. It comforts me.",
-        'tavern': "Most people spend their days there. There's nothing really better to do.",
-        'town': "This town is so boring. It's all gray. Grey rocks, gray fog, gray water. Even some of the people seem gray. It's got history though."
+        'tavern': "Most people spend their days there. There's nothing really better to do, unless you work the docks, or own a shop or something.",
+        'town': "This town is so boring. It's all gray. Gray rocks, gray fog, gray water. Even some of the people seem gray. It's got history though.",
+        'rocks': "I've never gone and looked. People say the caves are out that way though."
     },
 }
 
